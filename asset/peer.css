@@ -1,0 +1,31 @@
+.centHead{
+    text-align: center;
+    font-size: x-large;
+    color: #128;
+    background: cornflowerblue;
+    font-weight: bold;
+}
+.lInfo{
+    text-align: left;
+    font-size: medium;
+    font-weight: bold;
+    clear: right;
+}
+.tHead{
+    font-weight: bold;
+    color: midnightblue;
+}
+.tHead,.myCol{
+    border: solid;
+    top:inherit;
+    position: relative;
+    display: inline-block;
+    margin: auto;
+    float:left;
+}
+
+
+.temp{
+    width:auto;
+    height: auto;
+}
