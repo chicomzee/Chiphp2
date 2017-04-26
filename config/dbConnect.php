@@ -56,7 +56,7 @@ function getRecords($conn,$Query,$valuesCount,$val1, $val2=null)
                 $valuesCount=0;
                 break;
             case 2:
-                $stmt->bind_param("ss", $val1, $val2);
+                $stmt->execute([$val1, $val2]);
                 $valuesCount=0;
                 break;
         }
