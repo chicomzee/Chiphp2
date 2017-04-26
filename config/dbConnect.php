@@ -5,7 +5,7 @@
  * Date: 08/03/2017
  * Time: 11:35
  */
-
+/*
     $connectstr_dbhost = '';//$host;
     $connectstr_dbname = '';//$dbName;
     $connectstr_dbusername = '';//$uname;
@@ -23,7 +23,8 @@
         $connectstr_dbpassword = preg_replace("/^.*Password=(.+?)$/", "\\1", $value);
         echo $connectstr_dbpassword." g4 <br> \r\n";;
     }
-    $conn = new mysqli($connectstr_dbhost, $connectstr_dbusername, $connectstr_dbpassword, $connectstr_dbname);
+    //$conn = new mysqli($connectstr_dbhost, $connectstr_dbusername, $connectstr_dbpassword, $connectstr_dbname);
+    $conn = new PDO("mysql:host=$connectstr_dbhost;dbname=$connectstr_dbname", $connectstr_dbusername, $connectstr_dbpassword);
     if (!$conn) {
         echo "Error: Unable to connect to MySQL." . PHP_EOL;
         echo "Debugging errno: " . mysqli_errno() . PHP_EOL;
@@ -32,6 +33,8 @@
     }
 /**/
 //$conn = new mysqli("localhost:52543", "root2", "", "localdb");
+$conn = new PDO("mysql:host=localhost:52543;dbname=localdb", "root2", "");
+$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 function getRecords($conn,$Query,$valuesCount,$val1, $val2=null)
 {
@@ -49,7 +52,7 @@ function getRecords($conn,$Query,$valuesCount,$val1, $val2=null)
             case 0:
                 break;
             case 1:
-                $stmt->bind_param("s", $val1);
+                $stmt->execute([$val1]);
                 $valuesCount=0;
                 break;
             case 2:
@@ -61,14 +64,15 @@ function getRecords($conn,$Query,$valuesCount,$val1, $val2=null)
     catch (mysqli_sql_exception $e){return e;}
     
     /* execute query */
-    $stmt->execute();
-    $result=null;
+    //$stmt->execute();
+    //$result=null;
     /* bind result variables */
-    $stmt->bind_result($result);
+    //$stmt->bind_result($result);
     
     /* fetch value */
-    $stmt->fetch();
-   return $result;
+    $result=$stmt->fetchAll();
+    //$stmt->fetchArray();
+    return $result;
 }
 
 
