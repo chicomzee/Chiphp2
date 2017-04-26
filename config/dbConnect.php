@@ -5,7 +5,7 @@
  * Date: 08/03/2017
  * Time: 11:35
  */
-/*
+//*
     $connectstr_dbhost = '';//$host;
     $connectstr_dbname = '';//$dbName;
     $connectstr_dbusername = '';//$uname;
@@ -25,17 +25,18 @@
     }
     //$conn = new mysqli($connectstr_dbhost, $connectstr_dbusername, $connectstr_dbpassword, $connectstr_dbname);
     $conn = new PDO("mysql:host=$connectstr_dbhost;dbname=$connectstr_dbname", $connectstr_dbusername, $connectstr_dbpassword);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     if (!$conn) {
         echo "Error: Unable to connect to MySQL." . PHP_EOL;
         echo "Debugging errno: " . mysqli_errno() . PHP_EOL;
         echo "Debugging error: " . mysqli_error() . PHP_EOL;
         exit;
     }
-/**/
+/**//*
 //$conn = new mysqli("localhost:52543", "root2", "", "localdb");
 $conn = new PDO("mysql:host=localhost:52543;dbname=localdb", "root2", "");
 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
+*/
 function getRecords($conn,$Query,$valuesCount,$val1, $val2=null)
 {
     if (!$conn) {
