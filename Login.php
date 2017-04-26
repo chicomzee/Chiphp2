@@ -9,11 +9,15 @@
 include "config/dbConnect.php";
 
 //$qry="select aa.passid,bb.name,bb.surname from pressfoward aa, users bb WHERE (aa.username= ? AND aa.paswd = ?) AND aa.passid=bb.uid";
-$qry="select passid from pressfoward WHERE username= ? AND paswd = ?";
+$qry="select passid, user_type from pressfoward WHERE username= ? AND paswd = ?";
 $myID=getRecords($conn, $qry,2,$_POST["username"], $_POST["password"]);
-foreach ($myID as $row){$myID=$row[0];}
+$myAuthLvl;
+foreach ($myID as $row){$myID=$row[0]; $myAuthLvl=$row[1];}
 //$myID=4; // for login
-if($myID)
+if($myAuthLvl==1){
+    include "adminDash.php";
+}
+else if($myID)
 {
     //$conn = new mysqli("localhost:52543", "root2", "", "localdb");
     $qry="select gid from results WHERE uid = ?";

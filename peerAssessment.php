@@ -27,7 +27,7 @@
         <p></p>
         Name and Number of student completing form: <?php print $sName . ", " . $sSname ?>
     </div>
-    <form method="post" action="subAccess.php">
+    <form name="" method="post" action="subAccess.php" enctype="multipart/form-data">
         <fieldset>
         <table class="table table-border">
             <thead>
@@ -58,7 +58,8 @@
         <label>Marks allocated must add up to 10</label></td>
 </tr>
 </table>
-<input type="submit" name="submit" value="submit">
+            <input type="file" name="image" />
+            <input type="submit" name="submit" value="submit">
 </fieldset>
 </form>
 </div>

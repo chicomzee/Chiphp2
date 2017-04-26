@@ -32,12 +32,12 @@
         echo "Debugging error: " . mysqli_error() . PHP_EOL;
         exit;
     }
-/**//**
+/**
 //$conn = new mysqli("localhost:52543", "root2", "", "localdb");
 $conn = new PDO("mysql:host=localhost:52543;dbname=localdb", "root2", "");
 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 //*/
-function getRecords($conn,$Query,$valuesCount,$val1, $val2=null)
+function getRecords($conn,$Query,$valuesCount,$val1=null, $val2=null)
 {
     if (!$conn) {
         echo "Error: Unable to connect to MySQL." . PHP_EOL;
@@ -51,6 +51,7 @@ function getRecords($conn,$Query,$valuesCount,$val1, $val2=null)
     try {
         switch ($valuesCount) {
             case 0:
+                $stmt->execute();
                 break;
             case 1:
                 $stmt->execute([$val1]);
