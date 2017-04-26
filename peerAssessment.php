@@ -7,7 +7,7 @@
  */
 
 ?>
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 <head title=" Peer Review">
     <link rel="stylesheet" href="asset/peer.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -21,34 +21,36 @@
     
     <div class="centHead">Peer Review Form</div>
     <div class="lInfo" style="height: 200px">
-        Group Name/Number: <?php print $gName."/".$myGID; ?><p>
+        Group Name/Number: <?php print $gName . "/" . $myGID; ?><p>
         <p></p>
         <p></p>
         <p></p>
-        Name and Number of student completing form: <?php print $sName.", ".$sSname ?>
+        Name and Number of student completing form: <?php print $sName . ", " . $sSname ?>
     </div>
-    <table class="table table-border">
-        <thead>
-        <tr>
-            <th>Student ID <p></p> Including Self</th>
-            <th>Student Name<p></p>Including Self</th>
-            <th>Main contribution to the group project<p></p>add comments if necessary</th>
-            <th>Marks Allocated %</th>
-        </tr>
-        </thead>
-        <input type="hidden" value="$myID">
-        <?php
-        foreach ($gUIDS as $row) {
-           print "
-<tr>
-<td><input type='text' name='sID[]' id='sID ' value='$row[0]' disabled </td>
-        <td><input type='text' name='sName[]' id='sName' value='$row[1] $row[2]' disabled </td>
-        <td><input type='text' name='sComent[]' id='sComent'   ></td>
-        <td><input type='text' name='sMark[]' id='sMark'   ></td>
-    </tr>
-";
-        } ?>
-</div>
+    <form method="post" action="subAccess.php">
+        <fieldset>
+        <table class="table table-border">
+            <thead>
+            <tr>
+                <th>Student ID <p></p> Including Self</th>
+                <th>Student Name<p></p>Including Self</th>
+                <th>Main contribution to the group project<p></p>add comments if necessary</th>
+                <th>Marks Allocated %</th>
+            </tr>
+            </thead>
+            <input type="hidden" value= <?php print $myID; ?> name="myID">
+            
+            <?php
+                foreach ($gUIDS as $row) {
+                print "
+            <tr>
+                <td><input type='text' name='sID[]' id='sID ' value='$row[0]'  </td>
+                <td><input type='text' name='sName[]' id='sName' value='$row[1] $row[2]' </td>
+                <td><input type='text' name='sComent[]' id='sComent'   ></td>
+                <td><input type='text' name='sMark[]' id='sMark'   ></td>
+            </tr>
+                ";
+            } ?>
 <tr>
     <td></td>
     <td></td>
@@ -56,10 +58,8 @@
         <label>Marks allocated must add up to 10</label></td>
 </tr>
 </table>
-
-<form method="post" action="subAccess.php">
-    <input hidden value=$gCount>
-    <input type="submit" name="submit">
+<input type="submit" name="submit" value="submit">
+</fieldset>
 </form>
 </div>
 </body>
