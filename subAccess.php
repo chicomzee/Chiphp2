@@ -6,10 +6,8 @@
  * Time: 21:18
  */
 include "config/dbConnect.php";
-$qry="insert into results (peerID, feedback, mark) VALUES (?,?,?) WHERE ";
-for ($i=0;$I<$_post['$gCount'];$i++){
+$qry="insert into results (peerID, feedback, mark) VALUES (?,?,?) WHERE uid = ?";
 
-$myID=setRecords($conn, $qry,3,$_POST["sName"][$i], $_POST["sComent"][$i],$_POST["sMark"][$i]);
+$myID=setRecords($conn, $qry,3,$_POST["myID"], $_POST["sComent"][$i],$_POST["sMark"][$i]);
 
-}
 ?>

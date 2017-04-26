@@ -28,7 +28,7 @@ if($myID)
     $gName=getRecords($conn, $qry, 1, $myGID);
     foreach ($gName as $row){$gName=$row[0];}
     
-    $qry="select uid from results WHERE gid=?";
+    $qry="select aa.uid, bb.name, bb.surname from results aa, users bb WHERE aa.gid=? AND bb.uid=aa.uid ";
     $gUIDS=getRecords($conn, $qry, 1, $myGID);
     
         include "peerAssessment.php";

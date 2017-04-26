@@ -30,19 +30,19 @@
     <table class="table table-border">
         <thead>
         <tr>
+            <th>Student ID <p></p> Including Self</th>
             <th>Student Name<p></p>Including Self</th>
             <th>Main contribution to the group project<p></p>add comments if necessary</th>
             <th>Marks Allocated %</th>
         </tr>
         </thead>
-        
-        
+        <input type="hidden" value="$myID">
         <?php
         foreach ($gUIDS as $row) {
            print "
 <tr>
-<td><input type='text' name='sID[]' id='sID ' value='$row[0]'  </td>
-        <td><input type='text' name='sName[]' id='sName ' </td>
+<td><input type='text' name='sID[]' id='sID ' value='$row[0]' disabled </td>
+        <td><input type='text' name='sName[]' id='sName' value='$row[1] $row[2]' disabled </td>
         <td><input type='text' name='sComent[]' id='sComent'   ></td>
         <td><input type='text' name='sMark[]' id='sMark'   ></td>
     </tr>
