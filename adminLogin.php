@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="asset/peer.css"/>
 </head>
 <body>
-<h1> Administrato Login </h1>
+<h1> Administrator Login </h1>
 <div>
 
 <form method="post" action="login.php">

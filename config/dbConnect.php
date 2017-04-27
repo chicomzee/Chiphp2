@@ -23,7 +23,8 @@
         $connectstr_dbpassword = preg_replace("/^.*Password=(.+?)$/", "\\1", $value);
         //echo $connectstr_dbpassword." g4 <br> \r\n";;
     }
-    //$conn = new mysqli($connectstr_dbhost, $connectstr_dbusername, $connectstr_dbpassword, $connectstr_dbname);
+    
+//$conn = new mysqli($connectstr_dbhost, $connectstr_dbusername, $connectstr_dbpassword, $connectstr_dbname);
     $conn = new PDO("mysql:host=$connectstr_dbhost;dbname=$connectstr_dbname", $connectstr_dbusername, $connectstr_dbpassword);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     if (!$conn) {
@@ -32,7 +33,7 @@
         echo "Debugging error: " . mysqli_error() . PHP_EOL;
         exit;
     }
-    
+ /**   
 //$conn = new mysqli("localhost:52543", "root2", "", "localdb");
 $conn = new PDO("mysql:host=localhost:52543;dbname=localdb", "root2", "");
 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
